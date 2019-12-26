@@ -7,7 +7,7 @@ if(ENVIRONMENT == 'development') {
 	$config['dbname'] = 'financeira';
 	$config['host'] = 'localhost:3306';
 	$config['dbuser'] = 'root';
-	$config['dbpass'] = 'A9c@16h-';
+	$config['dbpass'] = 'root';
 } else {
 	define("BASE_URL", "http://localhost/nova_loja_painel/");
 	$config['dbname'] = 'loja2';

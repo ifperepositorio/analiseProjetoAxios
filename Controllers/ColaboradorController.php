@@ -63,6 +63,11 @@ class ColaboradorController extends Controller {
     public function edit($id){
         $col = new Colaborador();
 
+        $this->arrayInfo = array(
+            'colaborador' => $this->col
+
+        );
+
         $this->arrayInfo['permissaoList'] = $col->listaPermissao();
 
         $this->arrayInfo['info'] = $col->get($id);
@@ -77,14 +82,19 @@ class ColaboradorController extends Controller {
     }
 
     public function edit_action($id){
+        $col = new Colaborador();
 
+        $this->arrayInfo = array(
+            'colaborador' => $this->col
+
+        );
 
         try {
-            $col = new Colaborador();
+
             $post = $_POST ?? null;
             $data = $this->obj($post);
 
-            var_dump($data); exit;
+
 
             if ($col->update($data))
                 echo json_encode(["success" => true, "message" => "Salvo com sucesso", "data" => $data]);
@@ -93,8 +103,6 @@ class ColaboradorController extends Controller {
         }catch (\Exception $e){
             echo json_encode(["success" => false, "message" => $e->getMessage()]);
         }
-
-
 
     }
 

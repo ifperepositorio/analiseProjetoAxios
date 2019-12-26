@@ -85,7 +85,7 @@ class PermissaoController extends Controller {
                   $p->linkItemToGroup($item, $id);
                 }
             }
-            //adicionou com sucesso
+            echo "Adiciionado com sucesso ".$_POST['name'];
             header("Location: ".BASE_URL.'permissao');
             exit;
         }else{
