@@ -9,7 +9,7 @@ docker-compose up
 Para verificar o ambiente em docker, acessar:  http://localhost/info.php
 
 
-## Acessando container
+## Acessando container do PHP
 ```bash
 docker-compose exec php bash
 ```
