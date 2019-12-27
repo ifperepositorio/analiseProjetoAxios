@@ -3,6 +3,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -20,6 +21,8 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
     <!--Bootastrap 4.4.1
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+
+
 </head>
 <body class="hold-transition sidebar-mini" style="background: #ebebeb; box-sizing: border-box;">
 <div class="wrapper" style="width: 100vw;">
@@ -118,7 +121,7 @@
                     <?php if ( $viewData['colaborador']->temPermissao('cad_colaborador')): ?>
                         <li class="nav-item mb-1" >
                             <a href="<?php echo BASE_URL;?>colaborador" class="item-style p-3">
-                            <i class="nav-icon fas fa-users-cog"></i>
+                                <i class="nav-icon fas fa-users-cog"></i>
                                 <p style="margin: 0;">
                                     Colaboradores
                                 </p>
@@ -198,5 +201,6 @@
 <!--  scripts-->
 
 <script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/colaborador.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/permissao.js"></script>
 </body>
 </html>

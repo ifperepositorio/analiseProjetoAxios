@@ -1,3 +1,7 @@
+<div id="msg">
+
+</div>
+
 <section>
     <h1>Adicionar Permissões</h1>
 </section>
@@ -32,5 +36,7 @@
 
     </form>
 </section>
+
+
 
 

@@ -131,7 +131,7 @@ class Colaborador extends Model {
   public function get($id){
        $array = array();
 
-          $sql = "SELECT nome, email, senha, atendente, unidade, id_permission FROM colaborador WHERE id = :id";
+          $sql = "SELECT id, nome, email, senha, atendente, unidade, id_permission FROM colaborador WHERE id = :id";
           $sql = $this->db->prepare($sql);
           $sql->bindValue(':id', $id);
           $sql->execute();
@@ -158,6 +158,7 @@ class Colaborador extends Model {
     }
 
   public function update($data){
+
 
       try {
 
