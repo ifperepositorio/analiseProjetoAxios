@@ -30,7 +30,8 @@ $(document).ready(function () {
 
    let  btnform = document.getElementById("btnform");
 
-         btnform.onclick = () => {
+   
+   btnform && btnform.addEventListener('click', function (e) {
         let validation = validador('formCol')
 
         let data = validation.collection
@@ -78,8 +79,7 @@ $(document).ready(function () {
             document.getElementById("formCol").reset();
             window.location.replace("Colaborador");
         }, 3000);
-    }
-
+   });
 
 
 }); //fim do document
