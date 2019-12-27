@@ -159,24 +159,24 @@ class Colaborador extends Model {
 
   public function update($data){
 
+        $sql = "UPDATE colaborador 
+                   SET nome          = :nome, 
+                       email         = :email, 
+                       atendente     = :atendente,
+                       unidade       = :unidade, 
+                       id_permission = :id_permission  
+                 WHERE id = :id";
+        
+        $sql = $this->db->prepare($sql);
 
-      try {
+        $sql->bindValue(':nome', $data->nome);
+        $sql->bindValue(':email', $data->email);
+        $sql->bindValue(':atendente', $data->atendente);
+        $sql->bindValue(':unidade', $data->unidade);
+        $sql->bindValue(':id_permission', $data->id_permission);
+        $sql->bindValue(':id', $data->id);
 
-          $sql = "UPDATE colaborador SET nome = :nome, email = :email, atendente = :atendente, unidade = :unidade, id_permission = :nivel  WHERE id = :id";
-          $sql = $this->db->prepare($sql);
-          $sql->bindValue(':nome', $data->nome);
-          $sql->bindValue(':email', $data->email);
-          $sql->bindValue(':atendente', $data->atendente);
-          $sql->bindValue(':unidade', $data->unidade);
-          $sql->bindValue(':id_permission', $data->nivel);
-          $sql->bindValue(':id', $data->id);
-          return  $sql->execute();
-
-          }catch(\PDOException $e){
-               $e->getMessage();
-}
-
-return false;
+        return  $sql->execute();
   }
 
   public function delete($id){
