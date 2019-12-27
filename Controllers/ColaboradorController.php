@@ -82,26 +82,33 @@ class ColaboradorController extends Controller {
     }
 
     public function edit_action($id){
-        $col = new Colaborador();
-
-        $this->arrayInfo = array(
-            'colaborador' => $this->col
-
-        );
-
         try {
 
+            $col = new Colaborador();
+
+            $this->arrayInfo = array(
+                'colaborador' => $this->col
+    
+            );
+            
             $post = $_POST ?? null;
             $data = $this->obj($post);
+            
 
+            $result = $col->update($data);
 
-
-            if ($col->update($data))
-                echo json_encode(["success" => true, "message" => "Salvo com sucesso", "data" => $data]);
-
-
-        }catch (\Exception $e){
-            echo json_encode(["success" => false, "message" => $e->getMessage()]);
+            echo json_encode([
+                "success" => true, 
+                "message" => "Salvo com sucesso", 
+                "data" => $data
+            ]);
+        }
+        catch (\Exception $e)
+        {
+            echo json_encode([
+                "success" => false, 
+                "message" => $e->getMessage()
+            ]);
         }
 
     }
