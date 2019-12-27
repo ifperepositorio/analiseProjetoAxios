@@ -3,9 +3,9 @@ require 'environment.php';
 
 $config = array();
 if(ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/sistema/");
+	define("BASE_URL", "http://localhost/");
 	$config['dbname'] = 'financeira';
-	$config['host'] = 'localhost:3306';
+	$config['host'] = 'mysql:3306';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = 'root';
 } else {
