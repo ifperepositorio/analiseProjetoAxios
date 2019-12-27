@@ -11,11 +11,11 @@
         <input type="text" name="email" id="email"      value="<?php echo $info['email'];?>">
         <input type="text" name="atendente" id="atendente"     value="<?php echo $info['atendente'];?>">
         <input type="text" name="unidade" id="unidade"      value="<?php echo $info['unidade'];?>">
-        <input type="text" name="idCol" id="idCol" value="<?php echo $info['id'];?>" disabled>
+        <input type="text" name="id" id="id" value="<?php echo $info['id'];?>" disabled>
 
 
 
-        <select  name="nivel">
+        <select  name="id_permission">
             <option></option>
             <?php foreach ($permissaoList as $item):?>
                 <option <?php echo ($item['id']==$info['id_permission']) ? 'selected' : '' ;?>
@@ -32,6 +32,9 @@
 
 <script>
 
+        document.getElementById('formEdit').addEventListener('submit', function(e){
+               e.preventDefault(); 
+        });
         const validador = (id) => {
             let form = document.getElementById(id);
             let length = form.elements.length;
@@ -61,6 +64,8 @@
         let  btnform = document.getElementById("btnEdit");
 
         btnform.onclick = () => {
+            
+
             let validation = validador('formEdit')
 
             let data = validation.collection
@@ -86,7 +91,7 @@
                 return
             }
 
-            axios.post("Colaborador/edit_action", formData).then(res => {
+            axios.post("<?php echo BASE_URL; ?>colaborador/edit_action/<?php echo $info['id'];?>", formData).then(res => {
                 console.table(res.data);
 
                 if (!res.data.success) {
@@ -95,19 +100,21 @@
                         title: 'Ocorreu um erro. ',
                         text: `${res.data.message}`
                     })
+                    return;
                 }
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Colaborador',
                     text: 'Editado com sucesso'
                 })
 
-            });
+                setTimeout(function () {
+                    document.getElementById("formEdit").reset();
+                    window.location = "<?php echo BASE_URL; ?>colaborador";
+                }, 3000);
 
-            var tmp = setTimeout(function () {
-                document.getElementById("formEdit").reset();
-                window.location.replace("colaborador");
-            }, 3000);
+            });
         }
 
 </script>
